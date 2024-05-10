@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A. Sort Array</title>
+</head>
+<body>
+
+<script>
+  var arr = [12, 9, 30, "A", "M", 99, 82, "J", "N", "B"];
+  
+  var letters = arr.filter(item => typeof item === 'string');
+  var numbers = arr.filter(item => typeof item === 'number');
+  
+  letters.sort();
+  numbers.sort((a, b) => a - b);
+  
+  var sortedArr = letters.concat(numbers);
+
+  document.write("[");
+  for (var i = 0; i < sortedArr.length; i++) {
+    if (i > 0) {
+      document.write(", ");
+    }
+    document.write(sortedArr[i]);
+  }
+  document.write("]");
+</script>
+
+</body>
+</html>

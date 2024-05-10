@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C. Count and Sort Letters</title>
+</head>
+<body>
+
+<form id="letterForm">
+  <label for="textInput">Input teks:</label>
+  <input type="text" id="textInput" name="textInput">
+  <button type="button" onclick="countAndSortLetters()">Enter</button>
+</form>
+
+<div id="result"></div>
+
+<script>
+function countAndSortLetters() {
+    const input = document.getElementById('textInput').value;
+    let letterCount = {};
+    for (let i = 0; i < input.length; i++) {
+        let letter = input[i];
+        if (/[a-zA-Z]/.test(letter)) { 
+            letter = letter.toLowerCase();
+            letterCount[letter] = (letterCount[letter] || 0) + 1;
+        }
+    }
+    let sortedLetters = Object.entries(letterCount);
+    sortedLetters.sort((a, b) => a[0].localeCompare(b[0]));
+    let resultString = '';
+    sortedLetters.forEach(([letter, count]) => {
+        resultString += `${letter}: ${count}<br>`;
+    });
+
+    document.getElementById('result').innerHTML = resultString;
+}
+</script>
+
+</body>
+</html>

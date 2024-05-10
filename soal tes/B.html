@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B. Pattern Count</title>
+</head>
+<body>
+
+<form id="patternForm">
+  <label for="textInput">Input teks:</label>
+  <input type="text" id="textInput" name="textInput"><br><br>
+  <label for="patternInput">Input pola:</label>
+  <input type="text" id="patternInput" name="patternInput"><br><br>
+  <button type="button" onclick="countPattern()">Enter</button>
+</form>
+
+<div id="result"></div>
+
+<script>
+function countPattern() {
+    const text = document.getElementById('textInput').value;
+    const pattern = document.getElementById('patternInput').value;
+    
+    const count = pattern_count(text, pattern);
+    
+    document.getElementById('result').innerText = "Output pola: " + count;
+}
+
+function pattern_count(text, pattern) {
+    let count = 0;
+    const textLen = text.length;
+    const patternLen = pattern.length;
+
+    if (patternLen === 0) {
+        return 0;
+    }
+
+    for (let i = 0; i <= textLen - patternLen; i++) {
+        let match = true;
+        for (let j = 0; j < patternLen; j++) {
+            if (text[i + j] !== pattern[j]) {
+                match = false;
+                break;
+            }
+        }
+        if (match) {
+            count++;
+        }
+    }
+
+    return count;
+}
+</script>
+
+</body>
+</html>
